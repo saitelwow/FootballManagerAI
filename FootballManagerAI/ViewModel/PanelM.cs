@@ -52,23 +52,20 @@ namespace FootballManagerAI.ViewModel
             VeryImpAttributes = new ObservableCollection<string>();
             VeryImpSelectedItem = null;
         }
-        #region Gettery i Settery
-        #region Age
+        #region Gettery i Settery       
         public int[] MinAges { get { return _minAges; } }
         public int[] MaxAges { get { return _maxAges; } }
         public int SelectedMinAge { get { return _selectedMinAge; } set { _selectedMinAge = value; OnPropertyChanged(nameof(SelectedMinAge)); } }
-        public int SelectedMaxAge { get { return _selectedMaxAge; } set { _selectedMaxAge = value; OnPropertyChanged(nameof(SelectedMaxAge)); } }
-        #endregion
-        #region Height
+        public int SelectedMaxAge { get { return _selectedMaxAge; } set { _selectedMaxAge = value; OnPropertyChanged(nameof(SelectedMaxAge)); } }            
         public int[] MinHeights { get { return _minHeights; } }
         public int[] MaxHeights { get { return _maxHeights; } }
         public int SelectedMinHeight { get { return _selectedMinHeight; } set { _selectedMinHeight = value; OnPropertyChanged(nameof(SelectedMinHeight)); } }
-        public int SelectedMaxHeight { get { return _selectedMaxHeight; } set { _selectedMaxHeight = value; OnPropertyChanged(nameof(SelectedMaxHeight)); } }
-        #endregion
-        #region Position
+        public int SelectedMaxHeight { get { return _selectedMaxHeight; } set { _selectedMaxHeight = value; OnPropertyChanged(nameof(SelectedMaxHeight)); } }      
         public string[] Positions { get { return _positions; } }
         public string SelectedPosition { get { return _selectedPosition; } set { _selectedPosition = value; OnPropertyChanged(nameof(SelectedPosition)); } }
-        #endregion
+        
+
+
         #region LBy
         public ObservableCollection<string> NormalAttributes
         {
@@ -102,8 +99,7 @@ namespace FootballManagerAI.ViewModel
         }
         #endregion
         #endregion
-        #region Metody
-        #region Inne
+        #region Metody       
         private bool CheckAges()
         {
             if (SelectedMinAge > SelectedMaxAge) return false;
@@ -125,19 +121,7 @@ namespace FootballManagerAI.ViewModel
                 SelectedMinHeight = MinHeights[0]; SelectedMaxHeight = MaxHeights[0];
             }
         }
-        private void ClearLBs()
-        {
-            NormalAttributes = LoadAtt(SelectedPosition);
-            if (ImpAttributes.Count > 0)
-            {
-                ImpAttributes.Clear();
-            }
-            if (VeryImpAttributes.Count > 0)
-            {
-                VeryImpAttributes.Clear();
-            }
-        }
-        #endregion
+
         #region Zmiany atrybutów
         public void minAgeChanged(object sender)
         {
@@ -159,7 +143,15 @@ namespace FootballManagerAI.ViewModel
         }
         public void positionChanged(object sender)
         {
-            ClearLBs();
+            NormalAttributes = LoadAtt(SelectedPosition);
+            if (ImpAttributes.Count > 0)
+            {
+                ImpAttributes.Clear();
+            }
+            if (VeryImpAttributes.Count > 0)
+            {
+                VeryImpAttributes.Clear();
+            }
         }
         public void minHeightChanged(object sender)
         {
@@ -178,22 +170,7 @@ namespace FootballManagerAI.ViewModel
                 SetDefault(2);
                 return;
             }
-        }
-
-        public void normalItemChanged(object sender)
-        {
-            
-        }
-        public void impItemChanged(object sender)
-        {
-            //MessageBox.Show(ImpSelectedItem);
-            //SelectedCalculatedPlayer = null;
-        }
-        public void veryImpItemChanged(object sender)
-        {
-            //MessageBox.Show(VeryImpSelectedItem);
-            //SelectedCalculatedPlayer = null;
-        }
+        }   
         #endregion
         public ObservableCollection<string> LoadAtt(string arg_position)
         {

@@ -38,7 +38,6 @@ namespace FootballManagerAI.View
         {
             AttributesOfPlayer = setPlayer.Attr;
             PlayerPosition = position;
-            //playerName.Text = playerAtt[1];
             playerName.Text = setPlayer.Attr[UtilityAI.SearchIndex("Name", UtilityAI.firstLine)];
             Age.Text = setPlayer.Attr[UtilityAI.SearchIndex("Age", UtilityAI.firstLine)];
             Height.Text = setPlayer.Attr[UtilityAI.SearchIndex("Height", UtilityAI.firstLine)];
@@ -69,28 +68,5 @@ namespace FootballManagerAI.View
                 physNbs.Items.Add(setPlayer.Attr[UtilityAI.SearchIndex(att, UtilityAI.firstLine)]);
             }
         }
-
-
-        //public static readonly DependencyProperty NameOfProperty = DependencyProperty.Register(
-        //    "NameOf", typeof(string), typeof(PlayerInfoWindow), new FrameworkPropertyMetadata(null));
-        //public static readonly DependencyProperty AgeOfProperty = DependencyProperty.Register(
-        //    "AgeOf", typeof(string), typeof(PlayerInfoWindow), new FrameworkPropertyMetadata(null));
-        //public static readonly DependencyProperty HeightOfProperty = DependencyProperty.Register(
-        //    "HeightOf", typeof(string), typeof(PlayerInfoWindow), new FrameworkPropertyMetadata(null));
-        //public string NameOf
-        //{
-        //    get { return (string)GetValue(NameOfProperty); }
-        //    set { SetValue(NameOfProperty, value); }
-        //}
-        //public string AgeOf
-        //{
-        //    get { return (string)GetValue(AgeOfProperty); }
-        //    set { SetValue(AgeOfProperty, value); }
-        //}
-        //public string HeightOf
-        //{
-        //    get { return (string)GetValue(HeightOfProperty); }
-        //    set { SetValue(HeightOfProperty, value); }
-        //}
     }
 }

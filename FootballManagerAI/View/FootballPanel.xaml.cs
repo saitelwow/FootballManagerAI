@@ -23,7 +23,7 @@ namespace FootballManagerAI.View
             InitializeComponent();
         }
         #region Wlasnosci
-        #region Ages
+        #region Zmiany atrybutów
         public static readonly DependencyProperty MinAgesProperty = DependencyProperty.Register(
             "MinAges", typeof(int[]), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
         public static readonly DependencyProperty MaxAgesProperty = DependencyProperty.Register(
@@ -32,8 +32,6 @@ namespace FootballManagerAI.View
             "CurrentMinAge", typeof(int), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
         public static readonly DependencyProperty CurrentMaxAgeProperty = DependencyProperty.Register(
             "CurrentMaxAge", typeof(int), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
-        #endregion
-        #region Height
         public static readonly DependencyProperty MinHeightsProperty = DependencyProperty.Register(
            "MinHeights", typeof(int[]), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
         public static readonly DependencyProperty MaxHeightsProperty = DependencyProperty.Register(
@@ -42,8 +40,6 @@ namespace FootballManagerAI.View
             "CurrentMinHeight", typeof(int), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
         public static readonly DependencyProperty CurrentMaxHeightProperty = DependencyProperty.Register(
             "CurrentMaxHeight", typeof(int), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
-        #endregion
-        #region Positions
         public static readonly DependencyProperty PositionsProperty = DependencyProperty.Register(
             "Positions", typeof(string[]), typeof(FootballPanel), new FrameworkPropertyMetadata(null));
         public static readonly DependencyProperty CurrentPositionProperty = DependencyProperty.Register(
@@ -84,8 +80,9 @@ namespace FootballManagerAI.View
             );
         #endregion
         #endregion
+
         #region Gettery i Settery
-        #region Ages
+        #region Zmiany atrybutów
         public int[] MinAges
         {
             get { return (int[])GetValue(MinAgesProperty); }
@@ -106,8 +103,6 @@ namespace FootballManagerAI.View
             get { return (int)GetValue(CurrentMaxAgeProperty); }
             set { SetValue(CurrentMaxAgeProperty, value); }
         }
-        #endregion
-        #region Heights
         public int[] MinHeights
         {
             get { return (int[])GetValue(MinHeightsProperty); }
@@ -128,8 +123,6 @@ namespace FootballManagerAI.View
             get { return (int)GetValue(CurrentMaxHeightProperty); }
             set { SetValue(CurrentMaxHeightProperty, value); }
         }
-        #endregion
-        #region Positions
         public string[] Positions
         {
             get { return (string[])GetValue(PositionsProperty); }
@@ -196,8 +189,9 @@ namespace FootballManagerAI.View
         }
         #endregion
         #endregion
+
         #region Eventy
-        #region Age
+        #region Zmiany atrybutów
         public static readonly RoutedEvent MinAgeChangedEvent =
             EventManager.RegisterRoutedEvent("OtherMinAgeSelected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(FootballPanel));
         public event RoutedEventHandler MinAgeChanged
@@ -210,7 +204,6 @@ namespace FootballManagerAI.View
             RoutedEventArgs args = new RoutedEventArgs(MinAgeChangedEvent);
             RaiseEvent(args);
         }
-
         public static readonly RoutedEvent MaxAgeChangedEvent =
             EventManager.RegisterRoutedEvent("OtherMaxAgeSelected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(FootballPanel));
         public event RoutedEventHandler MaxAgeChanged
@@ -223,8 +216,6 @@ namespace FootballManagerAI.View
             RoutedEventArgs args = new RoutedEventArgs(MaxAgeChangedEvent);
             RaiseEvent(args);
         }
-        #endregion
-        #region Heights
         public static readonly RoutedEvent MinHeightChangedEvent =
             EventManager.RegisterRoutedEvent("OtherMinHeightSelected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(FootballPanel));
         public event RoutedEventHandler MinHeightChanged
@@ -237,7 +228,6 @@ namespace FootballManagerAI.View
             RoutedEventArgs args = new RoutedEventArgs(MinHeightChangedEvent);
             RaiseEvent(args);
         }
-
         public static readonly RoutedEvent MaxHeightChangedEvent =
             EventManager.RegisterRoutedEvent("OtherMaxHeightSelected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(FootballPanel));
         public event RoutedEventHandler MaxHeightChanged
@@ -250,8 +240,6 @@ namespace FootballManagerAI.View
             RoutedEventArgs args = new RoutedEventArgs(MaxHeightChangedEvent);
             RaiseEvent(args);
         }
-        #endregion
-        #region Positions
         public static readonly RoutedEvent PositionChangedEvent =
             EventManager.RegisterRoutedEvent("OtherPositionSelected", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(FootballPanel));
         public event RoutedEventHandler PositionChanged
@@ -259,7 +247,6 @@ namespace FootballManagerAI.View
             add { AddHandler(PositionChangedEvent, value); }
             remove { RemoveHandler(PositionChangedEvent, value); }
         }
-        
         void RaisePositionChangedEvent(object sender, SelectionChangedEventArgs e)
         {
             RoutedEventArgs args = new RoutedEventArgs(PositionChangedEvent);
