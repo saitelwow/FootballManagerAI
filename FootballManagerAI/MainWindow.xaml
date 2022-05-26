@@ -1,0 +1,68 @@
+﻿<Window x:Class="FootballManagerAI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FootballManagerAI"
+        xmlns:vw="clr-namespace:FootballManagerAI.View"
+        xmlns:vm="clr-namespace:FootballManagerAI.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="900">
+    <Window.Resources>
+        <vm:MainVM x:Key="viewModel"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource viewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <vw:FootballPanel MinAges="{Binding Panel.MinAges}" CurrentMinAge="{Binding Panel.SelectedMinAge, Mode=TwoWay}" 
+                          MaxAges="{Binding Panel.MaxAges}" CurrentMaxAge="{Binding Panel.SelectedMaxAge, Mode=TwoWay}"
+                          Positions="{Binding Panel.Positions}" CurrentPosition="{Binding Panel.SelectedPosition, Mode=TwoWay}"
+                          MinHeights="{Binding Panel.MinHeights}" CurrentMinHeight="{Binding Panel.SelectedMinHeight, Mode=TwoWay}"
+                          MaxHeights="{Binding Panel.MaxHeights}" CurrentMaxHeight="{Binding Panel.SelectedMaxHeight, Mode=TwoWay}"
+                          NormalItemsSource="{Binding Panel.NormalAttributes}" NormalCurrentItemSource="{Binding Panel.NormalSelectedItem, Mode=TwoWay}"
+                          ImpItemsSource="{Binding Panel.ImpAttributes}" ImpCurrentItemSource="{Binding Panel.ImpSelectedItem, Mode=TwoWay}"
+                          VeryImpItemsSource="{Binding Panel.VeryImpAttributes}" VeryImpCurrentItemSource="{Binding Panel.VeryImpSelectedItem, Mode=TwoWay}"
+                          AddNormalImp="{Binding AddNormalImpClick}" RemNormalImp="{Binding RemNormalImpClick}"
+                          AddImpVeryImp="{Binding AddImpVeryImpClick}" RemImpVeryImp="{Binding RemImpVeryImpClick}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MinAgeChanged">
+                    <i:InvokeCommandAction Command="{Binding MinAgeChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MaxAgeChanged">
+                    <i:InvokeCommandAction Command="{Binding MaxAgeChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MinHeightChanged">
+                    <i:InvokeCommandAction Command="{Binding MinHeightChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MaxHeightChanged">
+                    <i:InvokeCommandAction Command="{Binding MaxHeightChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="PositionChanged">
+                    <i:InvokeCommandAction Command="{Binding PositionChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="NormalItemChanged">
+                    <i:InvokeCommandAction Command="{Binding NormalItemChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="ImpItemChanged">
+                    <i:InvokeCommandAction Command="{Binding ImpItemChanged}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="VeryImpItemChanged">
+                    <i:InvokeCommandAction Command="{Binding VeryImpItemChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </vw:FootballPanel>
+        <vw:RightPanel Grid.Column="1" LoadCl="{Binding LoadClick}" CheckCl="{Binding CheckClick}"
+                       CalcPlayers="{Binding RightPanel.CalculatedPlayers}" 
+                       CalcPlayerSelected="{Binding RightPanel.SelectedCalculatedPlayer, Mode=TwoWay}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="CalcPlayerChanged">
+                    <i:InvokeCommandAction Command="{Binding CalcPlayerChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </vw:RightPanel>
+
+    </Grid>
+</Window>
