@@ -1,1 +1,3 @@
 # FootballManagerAI
+
+Projekt C# AI
