@@ -75,13 +75,13 @@ namespace FootballManagerAI.ViewModel
                 + "Pozycja: " + Panel.SelectedPosition);
             TempList = UtilityAI.ClearList(Panel.SelectedMinAge, Panel.SelectedMaxAge, Panel.SelectedMinHeight,
                 Panel.SelectedMaxHeight, Panel.SelectedPosition, TempList);
-            TempList = UtilityAI.Calculate(Panel.ImpAttributes, Panel.VeryImpAttributes, TempList);
-            TempList = TempList.OrderByDescending(o => o.Overall).ToList();
             if (TempList.Count <= 0)
             {
                 MessageBox.Show("Nie znalazło nikogo.");
                 return;
             }
+            TempList = UtilityAI.Calculate(Panel.ImpAttributes, Panel.VeryImpAttributes, TempList);
+            TempList = TempList.OrderByDescending(o => o.Overall).ToList();          
             for (int i = 0; i < TempList.Count; i++)
             {
                 CalculatedPlayers.Add(TempList.ElementAt(i).Attr[1].ToString());
