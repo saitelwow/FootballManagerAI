@@ -3,29 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:FootballManagerAI.View"
         xmlns:vm="clr-namespace:FootballManagerAI.ViewModel"
+        xmlns:local="clr-namespace:FootballManagerAI.View"
+        
         mc:Ignorable="d"
-        Title="PlayerInfoWindow" Height="525" Width="800">
+        Title="PlayerInfoWindow" Height="550" Width="850">
     <Window.Resources>
-        <vm:MainVM x:Key="viewModel"/>
+        <vm:PlWinVM x:Key="viewModel"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource viewModel}">
-        <TextBlock Name="playerName" FontSize="25" Width="300" HorizontalAlignment="Left" Margin="25,25,0,0" 
-                   TextWrapping="Wrap" Text="Name" VerticalAlignment="Top"/>
-        <TextBlock Name="Age" HorizontalAlignment="Left" FontSize="15" Height="25" Width="25" Margin="25,75,0,0" 
-                   TextWrapping="Wrap" Text="Age" VerticalAlignment="Top"/>
+    <Grid>
+        <TextBlock FontSize="25" Width="300" HorizontalAlignment="Left" Margin="25,25,0,0" 
+                   TextWrapping="Wrap" Text="{Binding PlayerName}" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="15" Height="25" Width="25" Margin="25,75,0,0" 
+                   TextWrapping="Wrap" Text="{Binding Age}" VerticalAlignment="Top"/>
         <Label Content="lat" HorizontalAlignment="Left" Height="25" Margin="75,72.5,0,0" VerticalAlignment="Top"/>
-        <TextBlock Name="Height" HorizontalAlignment="Left" FontSize="15" Height="25" Width="25" Margin="25,100,0,0" TextWrapping="Wrap" Text="height" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" FontSize="15" Height="25" Width="25" Margin="25,100,0,0" 
+                   TextWrapping="Wrap" Text="{Binding Height}" VerticalAlignment="Top"/>
         <Label Content="cm" HorizontalAlignment="Left" Height="25" Margin="75,97.5,0,0" VerticalAlignment="Top"/>
-        <ListBox Name="gktechAtt" Width="150" HorizontalAlignment="Left" BorderBrush="Black" Margin="25,150,600,25" IsEnabled="False"/>
-        <ListBox Name="gktechNbs" BorderBrush="Black" Width="25" HorizontalAlignment="Left" Margin="175,150,500,25" IsEnabled="False"/>
+        
+        <ListBox Width="150" HorizontalAlignment="Left" BorderBrush="Black" Margin="25,150,600,25" IsEnabled="False"
+                 ItemsSource="{Binding GkTechAttr}"/>
+        <ListBox BorderBrush="Black" Width="25" HorizontalAlignment="Left" Margin="175,150,500,25" IsEnabled="False"
+                 ItemsSource="{Binding GkTechNbs}"/>
         <Label Name="gktechlabel" Content="Gk/Tech Atts" HorizontalAlignment="Left" Margin="25,125,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="mentalAtt" BorderBrush="Black" Width="150" HorizontalAlignment="Center"  Margin="0,150,0,25" IsEnabled="False"/>
-        <ListBox x:Name="mentalNbs" BorderBrush="Black" Width="25" HorizontalAlignment="Center" Margin="175,150,0,25" IsEnabled="False"/>
-        <Label x:Name="mentallabel" Content="Mental" HorizontalAlignment="Center" Margin="0,125,100,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="physAtt" BorderBrush="Black" Width="150" HorizontalAlignment="Right"  Margin="0,150,50,25" IsEnabled="False"/>
-        <ListBox x:Name="physNbs" BorderBrush="Black" Width="25" HorizontalAlignment="Right" Margin="0,150,25,25" IsEnabled="False"/>
-        <Label x:Name="physlabel" Content="Physical" HorizontalAlignment="Right" Margin="0,125,150,0" VerticalAlignment="Top"/>
+        
+        <ListBox BorderBrush="Black" Width="150" HorizontalAlignment="Center"  Margin="0,150,0,25" IsEnabled="False"
+                 ItemsSource="{Binding MentalAttr}"/>
+        <ListBox BorderBrush="Black" Width="25" HorizontalAlignment="Center" Margin="175,150,0,25" IsEnabled="False"
+                 ItemsSource="{Binding MentalNbs}"/>
+        <Label Content="Mental" HorizontalAlignment="Center" Margin="0,125,100,0" VerticalAlignment="Top"/>
+        
+        <ListBox BorderBrush="Black" Width="150" HorizontalAlignment="Right"  Margin="0,150,50,25" IsEnabled="False"
+                 ItemsSource="{Binding PhysAttr}"/>
+        <ListBox BorderBrush="Black" Width="25" HorizontalAlignment="Right" Margin="0,150,25,25" IsEnabled="False"
+                 ItemsSource="{Binding PhysNbs}"/>
+        <Label Content="Physical" HorizontalAlignment="Right" Margin="0,125,150,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

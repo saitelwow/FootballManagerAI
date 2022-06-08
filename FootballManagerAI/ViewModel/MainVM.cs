@@ -78,11 +78,13 @@ namespace FootballManagerAI.ViewModel
         }
         #endregion
         public PanelM Panel { get; set; }
-        public RightPanelVM RightPanel { get; set; }
+        public RightPanelVM RightPanel { get; set; } 
+        public PlWinVM PlWinVM { get; set; }
         public MainVM()
         {
             Panel = new PanelM();
             RightPanel = new RightPanelVM(Panel);
+            PlWinVM = new PlWinVM(Panel, RightPanel);
         }
         #region ICommandy
         #region Zmiany atrybutów
@@ -155,8 +157,9 @@ namespace FootballManagerAI.ViewModel
             get
             {
                 if (_calcPlayerChanged == null)
-                {
-                    _calcPlayerChanged = new RelayCommand(RightPanel.calcPlayerChanged, arg => true);
+                {                   
+                    //_calcPlayerChanged = new RelayCommand(RightPanel.calcPlayerChanged, arg => true);
+                    _calcPlayerChanged = new RelayCommand(PlWinVM.OpenWindow, arg => true);
                 }
                 return _calcPlayerChanged;
             }

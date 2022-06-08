@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 
 namespace FootballManagerAI
 {
+    using ViewModel;
     public partial class MainWindow : Window
     {
         public MainWindow()

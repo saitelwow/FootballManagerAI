@@ -91,6 +91,27 @@ namespace FootballManagerAI.Model
             }
             return argListofPlayers;
         }
+
+
+
+        public static double CalcImp(int[] indexes, string[] Attr)
+        {
+            double res = 0;
+            foreach (int index in indexes)
+            {
+                res += (Convert.ToDouble(Attr[index]) / 20);
+            }
+            return res;
+        }
+        public static double CalcVeryImp(int[] indexes, string[] Attr)
+        {
+            double res = 0;
+            foreach (int index in indexes)
+            {
+                res += Math.Pow((Convert.ToDouble(Attr[index]) / 20), 2);
+            }
+            return res;
+        }
         #endregion
     } 
 }

@@ -23,27 +23,9 @@ namespace FootballManagerAI.Model
             Attr = arg;
         }
         #region Metody
-        private double CalcImp(int[] indexes)
-        {
-            double res = 0;
-            foreach (int index in indexes)
-            {
-                res += (Convert.ToDouble(Attr[index]) / 20);
-            }
-            return res;
-        }
-        private double CalcVeryImp(int[] indexes)
-        {
-            double res = 0;
-            foreach (int index in indexes)
-            {
-                res += Math.Pow((Convert.ToDouble(Attr[index]) / 20), 2);
-            }
-            return res;
-        }
         public void CalcOverall(int[] impInd, int[] veryImpInd)
         {
-            Overall = CalcImp(impInd) + CalcVeryImp(veryImpInd);
+            Overall = UtilityAI.CalcImp(impInd, Attr) + UtilityAI.CalcVeryImp(veryImpInd, Attr);
             Overall = Math.Round(Overall, 8);
         }
         #endregion

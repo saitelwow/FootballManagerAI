@@ -12,6 +12,8 @@ namespace FootballManagerAI.ViewModel
     using Microsoft.Win32;
     using System.Collections.ObjectModel;
     using System.Windows;
+    using System.ComponentModel;
+
     internal class RightPanelVM : BaseVM
     {
         public PanelM Panel { get; set; }
@@ -45,7 +47,7 @@ namespace FootballManagerAI.ViewModel
         public string SelectedCalculatedPlayer
         {
             get { return _selectedCalculatedPlayer; }
-            set { _selectedCalculatedPlayer = value; OnPropertyChanged(nameof(CalculatedPlayers)); }
+            set { _selectedCalculatedPlayer = value; OnPropertyChanged(nameof(SelectedCalculatedPlayer)); }
         }
         #endregion
         #region Metody
@@ -87,13 +89,6 @@ namespace FootballManagerAI.ViewModel
                 CalculatedPlayers.Add(TempList.ElementAt(i).Attr[1].ToString());
                 if (i == 9) break;
             }
-        }
-        public void calcPlayerChanged(object sender)
-        {
-            if (SelectedCalculatedPlayer == null) return;
-            int selectedIndex = CalculatedPlayers.IndexOf(SelectedCalculatedPlayer);
-            PlayerInfoWindow piw = new PlayerInfoWindow(TempList.ElementAt(selectedIndex), Panel.SelectedPosition);
-            piw.Show();
         }
         #endregion
     }

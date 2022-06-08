@@ -43,15 +43,6 @@
                 <i:EventTrigger EventName="PositionChanged">
                     <i:InvokeCommandAction Command="{Binding PositionChanged}"/>
                 </i:EventTrigger>
-                <i:EventTrigger EventName="NormalItemChanged">
-                    <i:InvokeCommandAction Command="{Binding NormalItemChanged}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="ImpItemChanged">
-                    <i:InvokeCommandAction Command="{Binding ImpItemChanged}"/>
-                </i:EventTrigger>
-                <i:EventTrigger EventName="VeryImpItemChanged">
-                    <i:InvokeCommandAction Command="{Binding VeryImpItemChanged}"/>
-                </i:EventTrigger>
             </i:Interaction.Triggers>
         </vw:FootballPanel>
         <vw:RightPanel Grid.Column="1" LoadCl="{Binding LoadClick}" CheckCl="{Binding CheckClick}"
